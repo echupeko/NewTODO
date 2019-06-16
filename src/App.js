@@ -23,36 +23,23 @@ class App extends React.Component {
     };
 
     render() {
-        if (this.state.visibleForm === 'visible') {
+
         return (
 
             <div className="App">
-
-                <Form
+                {this.state.visibleForm === 'visible' &&  <Form
                     addTask={this.addTask}
                     visibleForm={this.state.visibleForm}
                     /*создать проспу для получения данных из form*/
-                />
+                />}
                 <Header/>
                 <Body
                     toDoItems={this.state.toDoItems}
                     handleClick={this.openMenuClick}
                 />
             </div>
-        );}
-        else {
-            return (
+        );
 
-                <div className="App">
-
-
-                    <Header/>
-                    <Body
-                        toDoItems={this.state.toDoItems}
-                        handleClick={this.openMenuClick}
-                    />
-                </div>
-            );}
 
     }
 }

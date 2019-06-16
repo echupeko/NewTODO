@@ -56,7 +56,7 @@ class Form extends React.Component {
         }];
         const {visibleForm} = this.props;
         return (
-            <div style={{visibility: visibleForm}}>
+            <div className={'formTask'} style={{visibility: visibleForm}}>
                 {list.map((element, index) =>
                     <Input
                         pushChange={this.giveChange}

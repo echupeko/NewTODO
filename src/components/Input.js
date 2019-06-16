@@ -8,8 +8,8 @@ class Input extends React.Component {
     }
 
     getChange = (event) => {
-        this.props.pushChange(event.target.value, this.state.nameInput);
-        this.setState({valueIn:event.target.value});
+        this.setState({valueIn: event.target.value});
+        this.props.pushChange(event, this.state.nameInput);
     }
 
     render() {

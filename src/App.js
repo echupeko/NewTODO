@@ -6,17 +6,13 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
-
-        titleTask: '',
-        descriptionTask: '',
-        importanceTask: '',
-        dateDeadline: new Date(),
-        dateCompleted: new Date(),
+        toDoItems: [],
         visibleForm: 'hidden'
     };
 
     addTask = () => {
-
+        console.log("re");
+        this.setState({toDoItems: 's'});
     }
 
     openMenuClick = () => {
@@ -27,8 +23,9 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Form
-                    addTask={this.addTask}
+                    handleClick={this.addTask}
                     visibleForm={this.state.visibleForm}
+                    /*создать проспу для получения данных из form*/
                 />
                 <Header/>
                 <Body

@@ -15,25 +15,25 @@ class Form extends React.Component {
     }
 
     pushTask = () => {
-
-
-        // const list = this.state[key];
-        //
-        // list.push({
-        //
-        //     titleTask: this.state.titleTask,
-        //     descriptionTask: this.state.descriptionTask,
-        //     importanceTask: this.state.importanceTask,
-        //     dateDeadline: this.state.dateDeadline.toLocaleDateString('ru-RU'),
-        //     dateCompleted: this.state.dateCompleted.toLocaleDateString('ru-RU')
-        // });
-        // this.setState({todoItem: list});
-         this.props.addTask(this.state.todoItem);
+        const list = this.state.toDoItems;
+        list.push({
+            titleTask: this.state.titleTask,
+            descriptionTask: this.state.descriptionTask,
+            importanceTask: this.state.importanceTask,
+            dateDeadline: this.state.dateDeadline.toLocaleDateString('ru-RU'),
+            dateCompleted: this.state.dateCompleted.toLocaleDateString('ru-RU')
+        });
+        this.setState({toDoItems: list});
+        //this.props.handleClick(this.state.toDoItems);
     }
 
-    giveChange = (value, states) => (event) => {
-        this.setState({});
-        console.log(this.state[states] + " /// " + value + " *** " + event.target.value);
+    giveChange = (event, value) => {
+        let stateObject = function () {//динамическое изменение стэйта
+            let returnObj = {};
+            returnObj[value] = event.target.value;
+            return returnObj;
+        }.bind(event)();
+        this.setState(stateObject);
     }
 
     render() {
@@ -65,15 +65,14 @@ class Form extends React.Component {
             <div style={{visibility: this.props.visibleForm}}>
                 {list.map((element, index) =>
                     <Input
-                        pushChange = {this.giveChange}
+                        pushChange={this.giveChange}
                         nameInput={element.nameInput}
                         typeInput={element.typeInput}
                         valueInput={element.valueInput}
                         key={index}
                     />)}
-
                 <Button
-                    hadleClick={this.pushTask}
+                    hadleClick={this.props.handleClick}
                     nameBtn='Add'
                 />
             </div>

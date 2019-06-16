@@ -3,7 +3,9 @@ import React from 'react';
 class Item extends React.Component{
     render() {
         return (
-            <div ></div>);}
+            <div>
+                {/*получаем данные из App*/}
+            </div>);}
 }
 
 export default Item;

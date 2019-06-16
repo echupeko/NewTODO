@@ -10,7 +10,7 @@ class Form extends React.Component {
         descriptionTask: '',
         importanceTask: '',
         dateDeadLine: new Date(),
-        dateCompleted: new Date(),
+        dateComplited: new Date(),
     };
 
     pushTask = () => {
@@ -21,6 +21,14 @@ class Form extends React.Component {
             dateDeadline: this.state.dateDeadLine,
             dateCompleted: this.state.dateComplited
         };
+        let msgReturn = '';
+        Object.keys(item).map((atrib) => {
+                if (item[atrib] === '' || item[atrib] == undefined || item[atrib] == null) {
+                    msgReturn += ' ' + atrib;
+                }
+            }
+        );
+        msgReturn && alert('Введите ' + msgReturn);
         this.props.addTask(item);
     };
 
@@ -71,7 +79,6 @@ class Form extends React.Component {
                         onChange={(event) => this.setState({importanceTask: event.target[event.target.selectedIndex].label})}>
                         {this.state.importance.map((element, index) =>
                             <option
-
                                 value={this.state.importanceTask}
                                 key={index}>
                                 {element}

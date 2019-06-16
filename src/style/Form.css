@@ -9,4 +9,8 @@
     width: 100%;
     height: 1000px;
     background-color: darkgray;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }

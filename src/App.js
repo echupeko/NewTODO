@@ -34,11 +34,14 @@ class App extends React.Component {
                     visibleForm={this.state.visibleForm}
                     /*создать проспу для получения данных из form*/
                 />}
-                <Header/>
-                <Body
-                    toDoItems={this.state.toDoItems}
-                    handleClick={this.openMenuClick}
-                />
+                {this.state.visibleForm === 'hidden' &&
+                <div>
+                    <Header/>
+                    <Body
+                        toDoItems={this.state.toDoItems}
+                        handleClick={this.openMenuClick}
+                    />
+                </div>}
             </div>
         );
 

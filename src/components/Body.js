@@ -8,9 +8,10 @@ class Body extends React.Component {
         const list = this.props.toDoItems;
         return (
             <div>
-                <Button style={{width: '100%'}}
-                        handleClick={this.props.handleClick}
-                        nameBtn='Open menu'
+                <Button
+                    style={{width: '100%'}}
+                    handleClick={this.props.handleClick}
+                    nameBtn='Open menu'
                 />
                 <div className={'itemRowTop'}>
                     <span>Name</span>

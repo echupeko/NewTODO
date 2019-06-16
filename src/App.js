@@ -10,25 +10,28 @@ class App extends React.Component {
         visibleForm: 'hidden'
     };
 
-    addTask = () => {
-        console.log("re");
-        this.setState({toDoItems: 's'});
-    }
+    addTask = (item) => {
+        console.log("item", item);
+        const {toDoItems} = this.state;
+        toDoItems.push(item);
+        this.setState({toDoItems});
+    };
 
     openMenuClick = () => {
-        this.setState({visibleForm: (this.state.visibleForm === 'hidden') ? 'visible' : 'hidden'});
-    }
+        this.setState({visibleForm: this.state.visibleForm === 'hidden' ? 'visible' : 'hidden'});
+    };
 
     render() {
         return (
             <div className="App">
                 <Form
-                    handleClick={this.addTask}
+                    addTask={this.addTask}
                     visibleForm={this.state.visibleForm}
                     /*создать проспу для получения данных из form*/
                 />
                 <Header/>
                 <Body
+                    toDoItems={this.state.toDoItems}
                     handleClick={this.openMenuClick}
                 />
             </div>

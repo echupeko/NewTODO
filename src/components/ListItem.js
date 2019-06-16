@@ -1,10 +1,11 @@
 import React from 'react';
-import Item from "./Item";
 
 class ListItem extends React.Component {
     render() {
         return (
-            <Item/>
+            <div>
+                <span>{this.props.item.titleTask}</span>
+            </div>
         );
     }
 }

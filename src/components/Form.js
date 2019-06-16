@@ -3,7 +3,6 @@ import Button from './Button'
 import Input from "./Input";
 
 class Form extends React.Component {
-
     state = {
         importance: this.props.importance,
         titleTask: '',
@@ -11,33 +10,29 @@ class Form extends React.Component {
         importanceTask: '',
         dateDeadline: new Date(),
         dateCompleted: new Date(),
-        toDoItems: []
-    }
+    };
 
     pushTask = () => {
-        const list = this.state.toDoItems;
-        list.push({
+        const item = {
             titleTask: this.state.titleTask,
             descriptionTask: this.state.descriptionTask,
             importanceTask: this.state.importanceTask,
             dateDeadline: this.state.dateDeadline.toLocaleDateString('ru-RU'),
             dateCompleted: this.state.dateCompleted.toLocaleDateString('ru-RU')
-        });
-        this.setState({toDoItems: list});
-        //this.props.handleClick(this.state.toDoItems);
-    }
+        };
+        this.props.addTask(item);
+    };
 
     giveChange = (event, value) => {
-        let stateObject = function () {//динамическое изменение стэйта
-            let returnObj = {};
-            returnObj[value] = event.target.value;
-            return returnObj;
+        const stateObject = function () {//динамическое изменение стэйта
+            return {
+                [value]: event.target.value || ''
+            };
         }.bind(event)();
         this.setState(stateObject);
-    }
+    };
 
     render() {
-
         const list = [{
             typeInput: 'text',
             valueInput: 'Name task',
@@ -50,19 +45,18 @@ class Form extends React.Component {
             onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date().toLocaleDateString('Ru-ru'),
+            valueInput: new Date().toLocaleDateString('ru-RU'),
             nameInput: 'dateDeadLine',
             onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date().toLocaleDateString('Ru-ru'),
+            valueInput: new Date().toLocaleDateString('ru-RU'),
             nameInput: 'dateComplited',
             onChange: {}
         }];
-
+        const {visibleForm} = this.props;
         return (
-
-            <div style={{visibility: this.props.visibleForm}}>
+            <div style={{visibility: visibleForm}}>
                 {list.map((element, index) =>
                     <Input
                         pushChange={this.giveChange}
@@ -72,7 +66,7 @@ class Form extends React.Component {
                         key={index}
                     />)}
                 <Button
-                    hadleClick={this.props.handleClick}
+                    handleClick={this.pushTask}
                     nameBtn='Add'
                 />
             </div>

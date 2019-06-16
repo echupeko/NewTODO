@@ -59,15 +59,16 @@ class Form extends React.Component {
         return (
             <div className={'backGr'} style={{visibility: visibleForm}}>
                 <div className={'formTask'}>
-                {list.map((element, index) =>
-                    <Input
-                        pushChange={this.giveChange}
-                        nameInput={element.nameInput}
-                        typeInput={element.typeInput}
-                        valueInput={element.valueInput}
-                        key={index}
-                    />)}
-                    <select  onChange={(event) => this.setState({importanceTask: event.target[event.target.selectedIndex].label})}>
+                    {list.map((element, index) =>
+                        <Input
+                            pushChange={this.giveChange}
+                            nameInput={element.nameInput}
+                            typeInput={element.typeInput}
+                            valueInput={element.valueInput}
+                            key={index}
+                        />)}
+                    <select
+                        onChange={(event) => this.setState({importanceTask: event.target[event.target.selectedIndex].label})}>
                         {this.state.importance.map((element, index) =>
                             <option
 
@@ -77,10 +78,10 @@ class Form extends React.Component {
                             </option>
                         )}
                     </select>
-                <Button
-                    handleClick={this.pushTask}
-                    nameBtn='Add'
-                />
+                    <Button
+                        handleClick={this.pushTask}
+                        nameBtn='Add'
+                    />
                 </div>
             </div>
         );

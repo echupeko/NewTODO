@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './App.css';
 import Header from "./components/Header";
@@ -29,8 +28,8 @@ class App extends React.Component {
         return (
 
             <div className="App">
-                {this.state.visibleForm === 'visible' &&  <Form
-                    importance = {this.state.importance}
+                {this.state.visibleForm === 'visible' && <Form
+                    importance={this.state.importance}
                     addTask={this.addTask}
                     visibleForm={this.state.visibleForm}
                     /*создать проспу для получения данных из form*/

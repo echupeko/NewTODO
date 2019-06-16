@@ -10,9 +10,8 @@ class App extends React.Component {
         visibleForm: 'hidden'
     };
 
-    addTask = () => {
-        console.log("re");
-        this.setState({toDoItems: 's'});
+    addTask = (value) => {
+        this.setState({toDoItems: value});
     }
 
     openMenuClick = () => {
@@ -29,6 +28,7 @@ class App extends React.Component {
                 />
                 <Header/>
                 <Body
+                    listItems = {this.state.toDoItems}
                     handleClick={this.openMenuClick}
                 />
             </div>

@@ -24,7 +24,7 @@ class Form extends React.Component {
             dateCompleted: this.state.dateCompleted.toLocaleDateString('ru-RU')
         });
         this.setState({toDoItems: list});
-        //this.props.handleClick(this.state.toDoItems);
+        this.props.handleClick(this.state.toDoItems);
     }
 
     giveChange = (event, value) => {
@@ -72,7 +72,7 @@ class Form extends React.Component {
                         key={index}
                     />)}
                 <Button
-                    hadleClick={this.props.handleClick}
+                    handleClick={this.pushTask}
                     nameBtn='Add'
                 />
             </div>

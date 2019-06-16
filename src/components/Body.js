@@ -10,6 +10,7 @@ class Body extends React.Component {
         return (
             <div>
                 <ListItem
+                    listItem = {this.props.listItems}
                 />
                 <Button
                     handleClick = {this.props.handleClick}

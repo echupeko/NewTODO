@@ -1,18 +1,14 @@
 import React from 'react';
-import Item from "./Item";
 
 class ListItem extends React.Component {
     render() {
         return (
-            <div style={{flexDirection: 'column'}}>
-                {this.props.listItem.map((element,index) =>
-                    Object.keys(element).map((atribute) =>
-                    <Item
-                        valueItem = {element[atribute]}
-                        key = {index}
-                    />)
-                )}
-
+            <div className={'itemRow'}>
+                <span>{this.props.item.titleTask}</span>
+                <span>{this.props.item.descriptionTask}</span>
+                <span>{this.props.item.importanceTask}</span>
+                <span>{this.props.item.dateDeadline}</span>
+                <span>{this.props.item.dateCompleted}</span>
             </div>
         );
     }

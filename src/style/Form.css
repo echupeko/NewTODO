@@ -1,0 +1,12 @@
+.formTask {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    margin: 0 auto;
+}
+
+.backGr {
+    width: 100%;
+    height: 1000px;
+    background-color: darkgray;
+}

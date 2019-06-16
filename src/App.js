@@ -7,6 +7,7 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
+        importance: ['Все', 'Обычная', 'Важная', 'Очень важная'],
         toDoItems: [],
         visibleForm: 'hidden'
     };
@@ -16,6 +17,7 @@ class App extends React.Component {
         const {toDoItems} = this.state;
         toDoItems.push(item);
         this.setState({toDoItems});
+        this.openMenuClick();
     };
 
     openMenuClick = () => {
@@ -28,6 +30,7 @@ class App extends React.Component {
 
             <div className="App">
                 {this.state.visibleForm === 'visible' &&  <Form
+                    importance = {this.state.importance}
                     addTask={this.addTask}
                     visibleForm={this.state.visibleForm}
                     /*создать проспу для получения данных из form*/

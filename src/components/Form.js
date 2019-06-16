@@ -1,5 +1,6 @@
 import React from 'react';
-import Button from './Button'
+import '../style/Form.css';
+import Button from './Button';
 import Input from "./Input";
 
 class Form extends React.Component {
@@ -8,7 +9,7 @@ class Form extends React.Component {
         titleTask: '',
         descriptionTask: '',
         importanceTask: '',
-        dateDeadline: new Date(),
+        dateDeadLine: new Date(),
         dateCompleted: new Date(),
     };
 
@@ -17,8 +18,8 @@ class Form extends React.Component {
             titleTask: this.state.titleTask,
             descriptionTask: this.state.descriptionTask,
             importanceTask: this.state.importanceTask,
-            dateDeadline: this.state.dateDeadline.toLocaleDateString('ru-RU'),
-            dateCompleted: this.state.dateCompleted.toLocaleDateString('ru-RU')
+            dateDeadline: this.state.dateDeadLine,
+            dateCompleted: this.state.dateComplited
         };
         this.props.addTask(item);
     };
@@ -45,18 +46,19 @@ class Form extends React.Component {
             onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date().toLocaleDateString('ru-RU'),
+            valueInput: new Date(),
             nameInput: 'dateDeadLine',
             onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date().toLocaleDateString('ru-RU'),
+            valueInput: new Date(),
             nameInput: 'dateComplited',
             onChange: {}
         }];
         const {visibleForm} = this.props;
         return (
-            <div className={'formTask'} style={{visibility: visibleForm}}>
+            <div className={'backGr'} style={{visibility: visibleForm}}>
+                <div className={'formTask'}>
                 {list.map((element, index) =>
                     <Input
                         pushChange={this.giveChange}
@@ -65,10 +67,21 @@ class Form extends React.Component {
                         valueInput={element.valueInput}
                         key={index}
                     />)}
+                    <select  onChange={(event) => this.setState({importanceTask: event.target[event.target.selectedIndex].label})}>
+                        {this.state.importance.map((element, index) =>
+                            <option
+
+                                value={this.state.importanceTask}
+                                key={index}>
+                                {element}
+                            </option>
+                        )}
+                    </select>
                 <Button
                     handleClick={this.pushTask}
                     nameBtn='Add'
                 />
+                </div>
             </div>
         );
     }

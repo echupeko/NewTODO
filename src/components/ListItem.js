@@ -6,12 +6,10 @@ class ListItem extends React.Component {
     checkedTask = () => {
         this.props.checkingTask(this.props.item.idTask);
     }
-
-
     render() {
         return (
             <div className={'itemRow'}>
-                <span><input type={'checkbox'} onChange={this.checkedTask} value={this.props.item.checkTask}></input></span>
+                <span><input type={'checkbox'} onChange={this.checkedTask} checked={this.props.item.checkTask} value={this.props.item.checkTask}></input></span>
                 <span>{this.props.item.titleTask}</span>
                 <span>{this.props.item.descriptionTask}</span>
                 <span>{this.props.item.importanceTask}</span>

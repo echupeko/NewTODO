@@ -29,14 +29,11 @@ class App extends React.Component {
     checkedTask = (index) => {
         const {toDoItems} = this.state;
         toDoItems[index].checkTask = !toDoItems[index].checkTask;
-        console.log(toDoItems[index].checkTask);
     }
 
     removeTask = () => {
-        const {toDoItems} = this.state;
-        toDoItems.map((element)=>
-            element.checkTask && toDoItems.splice(element.idTask)
-        );
+        let {toDoItems} = this.state;
+        toDoItems = toDoItems.filter(item => !item.checkTask);
         this.setState({toDoItems});
     }
 

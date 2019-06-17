@@ -7,21 +7,38 @@ import Form from "./components/Form";
 class App extends React.Component {
     state = {
         importance: ['Все', 'Обычная', 'Важная', 'Очень важная'],
+        idTask: 0,
         toDoItems: [],
         visibleForm: 'hidden'
     };
 
     addTask = (item) => {
         console.log("item", item);
+        item.idTask = this.state.idTask;
         const {toDoItems} = this.state;
         toDoItems.push(item);
         this.setState({toDoItems});
+        this.setState({idTask: this.state.idTask + 1});
         this.openMenuClick();
     };
 
     openMenuClick = () => {
         this.setState({visibleForm: this.state.visibleForm === 'hidden' ? 'visible' : 'hidden'});
     };
+
+    checkedTask = (index) => {
+        const {toDoItems} = this.state;
+        toDoItems[index].checkTask = !toDoItems[index].checkTask;
+        console.log(toDoItems[index].checkTask);
+    }
+
+    removeTask = () => {
+        const {toDoItems} = this.state;
+        toDoItems.map((element)=>
+            element.checkTask && toDoItems.splice(element.idTask)
+        );
+        this.setState({toDoItems});
+    }
 
     render() {
 
@@ -32,14 +49,14 @@ class App extends React.Component {
                     importance={this.state.importance}
                     addTask={this.addTask}
                     visibleForm={this.state.visibleForm}
-                    /*создать проспу для получения данных из form*/
                 />}
-                {this.state.visibleForm === 'hidden' &&
-                <div>
+                {this.state.visibleForm === 'hidden' && <div>
                     <Header/>
                     <Body
                         toDoItems={this.state.toDoItems}
                         handleClick={this.openMenuClick}
+                        removeTask={this.removeTask}
+                        checkedTask={this.checkedTask}
                     />
                 </div>}
             </div>

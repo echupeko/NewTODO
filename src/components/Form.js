@@ -6,15 +6,18 @@ import Input from "./Input";
 class Form extends React.Component {
     state = {
         importance: this.props.importance,
-        titleTask: '',
-        descriptionTask: '',
-        importanceTask: '',
-        dateDeadLine: new Date(),
-        dateComplited: new Date(),
+        checkTask: false,
+        titleTask: 'Задача',
+        descriptionTask: 'Описание',
+        importanceTask: 'Обычная',
+        dateDeadLine: new Date().toLocaleDateString('ru-RU'),
+        dateComplited: new Date().toLocaleDateString('ru-RU'),
     };
 
     pushTask = () => {
+        this.setState({checkTask: false});
         const item = {
+            checkTask: this.state.checkTask,
             titleTask: this.state.titleTask,
             descriptionTask: this.state.descriptionTask,
             importanceTask: this.state.importanceTask,
@@ -23,7 +26,7 @@ class Form extends React.Component {
         };
         let msgReturn = '';
         Object.keys(item).map((atrib) => {
-                if (item[atrib] === '' || item[atrib] == undefined || item[atrib] == null) {
+                if (item[atrib] === '' || item[atrib] === undefined || item[atrib] === null) {
                     msgReturn += ' ' + atrib;
                 }
             }

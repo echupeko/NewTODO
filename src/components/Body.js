@@ -9,9 +9,12 @@ class Body extends React.Component {
         return (
             <div>
                 <Button
-                    style={{width: '100%'}}
                     handleClick={this.props.handleClick}
                     nameBtn='Open menu'
+                />
+                <Button
+                    handleClick={this.props.removeTask}
+                    nameBtn='Remove'
                 />
                 <div className={'itemRowTop'}>
                     <span>Name</span>
@@ -20,10 +23,11 @@ class Body extends React.Component {
                     <span>Date deadline</span>
                     <span>Date completed</span>
                 </div>
-                {list.map((item, index) => {
+                {list.length > 0 && list.map((item, index) => {
                     return <ListItem
                         key={index}
                         item={item}
+                        checkingTask = {this.props.checkedTask}
                     />
                 })}
             </div>

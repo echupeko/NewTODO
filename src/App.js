@@ -48,8 +48,10 @@ class App extends React.Component {
     };
 
     checkedTask = (index) => {
-        const {toDoItems} = this.state;
-        toDoItems[index].checkTask = !toDoItems[index].checkTask;
+        let {toDoItems} = this.state;
+        toDoItems.forEach(function (item) {
+            if (item.idTask === index) {item.checkTask = !item.checkTask};
+        })
         this.setState({toDoItems});
     }
 

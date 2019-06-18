@@ -35,6 +35,8 @@ class App extends React.Component {
         let {toDoItems} = this.state;
         toDoItems = toDoItems.filter(item => !item.checkTask);
         this.setState({toDoItems});
+        this.setState({idTask: this.state.toDoItems.length});
+
     }
 
     render() {

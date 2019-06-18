@@ -29,6 +29,7 @@ class App extends React.Component {
     checkedTask = (index) => {
         const {toDoItems} = this.state;
         toDoItems[index].checkTask = !toDoItems[index].checkTask;
+        this.setState({toDoItems});
     }
 
     removeTask = () => {

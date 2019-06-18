@@ -45,32 +45,12 @@ class Form extends React.Component {
     };
 
     render() {
-        const list = [{
-            typeInput: 'text',
-            valueInput: 'Name task',
-            nameInput: 'titleTask',
-            onChange: {}
-        }, {
-            typeInput: 'text',
-            valueInput: 'Description task',
-            nameInput: 'descriptionTask',
-            onChange: {}
-        }, {
-            typeInput: 'date',
-            valueInput: new Date(),
-            nameInput: 'dateDeadLine',
-            onChange: {}
-        }, {
-            typeInput: 'date',
-            valueInput: new Date(),
-            nameInput: 'dateComplited',
-            onChange: {}
-        }];
+        const inputList = this.props.inputList;
         const {visibleForm} = this.props;
         return (
             <div className={'backGr'} style={{visibility: visibleForm}}>
                 <div className={'formTask'}>
-                    {list.map((element, index) =>
+                    {inputList.map((element, index) =>
                         <Input
                             pushChange={this.giveChange}
                             nameInput={element.nameInput}

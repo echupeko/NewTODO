@@ -6,10 +6,31 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
-        importance: ['Все', 'Обычная', 'Важная', 'Очень важная'],
         idTask: 0,
         toDoItems: [],
-        visibleForm: 'hidden'
+        visibleForm: 'hidden',
+        importance: ['Все', 'Обычная', 'Важная', 'Очень важная'],
+        inputList: [{
+            typeInput: 'text',
+            valueInput: 'Name task',
+            nameInput: 'titleTask',
+            onChange: {}
+        }, {
+            typeInput: 'text',
+            valueInput: 'Description task',
+            nameInput: 'descriptionTask',
+            onChange: {}
+        }, {
+            typeInput: 'date',
+            valueInput: new Date(),
+            nameInput: 'dateDeadLine',
+            onChange: {}
+        }, {
+            typeInput: 'date',
+            valueInput: new Date(),
+            nameInput: 'dateComplited',
+            onChange: {}
+        }]
     };
 
     addTask = (item) => {
@@ -46,6 +67,7 @@ class App extends React.Component {
 
             <div className="App">
                 {this.state.visibleForm === 'visible' && <Form
+                    inputList = {this.state.inputList}
                     importance={this.state.importance}
                     addTask={this.addTask}
                     visibleForm={this.state.visibleForm}

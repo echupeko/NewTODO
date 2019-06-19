@@ -13,16 +13,14 @@ class App extends React.Component {
     };
 
     addTask = (item) => {
-        console.log("item", item);
-        item.idTask = this.state.idTask;
+        item.idTask = this.state.toDoItems.length;
         const {toDoItems} = this.state;
         toDoItems.push(item);
         this.setState({toDoItems});
-        this.setState({idTask: this.state.idTask + 1});
-        this.openMenuClick();
+        this.openForm();
     };
 
-    openMenuClick = () => {
+    openForm = () => {
         this.setState({visibleForm: this.state.visibleForm === 'hidden' ? 'visible' : 'hidden'});
     };
 
@@ -30,7 +28,7 @@ class App extends React.Component {
         const {toDoItems} = this.state;
         let {items} = this.state;
         items = toDoItems.filter(item => item.idTask === index);
-        this.openMenuClick();
+        this.openForm();
         this.setState({items});
     }
 
@@ -57,14 +55,14 @@ class App extends React.Component {
                     itemTask = {this.state.items}
                     importanceList={this.state.importanceList}
                     addTask={this.addTask}
-                    closeMenu = {this.openMenuClick}
+                    closeMenu = {this.openForm}
                     visibleForm={this.state.visibleForm}
                 />}
                 {this.state.visibleForm === 'hidden' && <div>
                     <Header/>
                     <Body
                         toDoItems={this.state.toDoItems}
-                        handleClick={this.openMenuClick}
+                        handleClick={this.openForm}
                         removeTask={this.removeTask}
                         changedItem = {this.changedItem}
                         checkedTask={this.checkedTask}

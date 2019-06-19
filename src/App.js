@@ -6,72 +6,72 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
-        idTask: 0,
         toDoItems: [],
         visibleForm: 'hidden',
-        importance: ['Все', 'Обычная', 'Важная', 'Очень важная'],
-        inputList: [{
+        importanceList: ['Все', 'Обычная', 'Важная', 'Очень важная'],
+        inputElementList: [{
             typeInput: 'text',
-            valueInput: 'Name task',
             nameInput: 'titleTask',
-            onChange: {}
         }, {
             typeInput: 'text',
-            valueInput: 'Description task',
             nameInput: 'descriptionTask',
-            onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date(),
             nameInput: 'dateDeadLine',
-            onChange: {}
         }, {
             typeInput: 'date',
-            valueInput: new Date(),
             nameInput: 'dateComplited',
-            onChange: {}
         }]
     };
 
-    addTask = (item) => {
-        console.log("item", item);
-        item.idTask = this.state.idTask;
-        const {toDoItems} = this.state;
-        toDoItems.push(item);
-        this.setState({toDoItems});
-        this.setState({idTask: this.state.idTask + 1});
-        this.openMenuClick();
-    };
 
-    openMenuClick = () => {
-        this.setState({visibleForm: this.state.visibleForm === 'hidden' ? 'visible' : 'hidden'});
-    };
 
-    checkedTask = (index) => {
-        let {toDoItems} = this.state;
-        toDoItems.forEach(function (item) {
-            if (item.idTask === index) {item.checkTask = !item.checkTask};
-        })
-        this.setState({toDoItems});
-    }
-
-    removeTask = () => {
-        let {toDoItems} = this.state;
-        toDoItems = toDoItems.filter(item => !item.checkTask);
-        this.setState({toDoItems});
-        this.setState({idTask: this.state.toDoItems.length});
-
-    }
+    // addTask = (item) => {
+    //     console.log("item", item);
+    //     item.idTask = this.state.idTask;
+    //     const {toDoItems} = this.state;
+    //     toDoItems.push(item);
+    //     this.setState({toDoItems});
+    //     this.setState({idTask: this.state.idTask + 1});
+    //     this.openMenuClick();
+    // };
+    //
+    // openMenuClick = () => {
+    //     this.setState({visibleForm: this.state.visibleForm === 'hidden' ? 'visible' : 'hidden'});
+    // };
+    //
+    // changedItem = (index) => {
+    //     const {toDoItems} = this.state;
+    //     let {items} = this.state;
+    //     items = toDoItems.filter(item => item.idTask === index);
+    //     this.openMenuClick();
+    //     this.setState({items});
+    // }
+    //
+    // checkedTask = (index) => {
+    //     let {toDoItems} = this.state;
+    //     toDoItems.forEach(function (item) {
+    //         if (item.idTask === index) {item.checkTask = !item.checkTask};
+    //     })
+    //     this.setState({toDoItems});
+    // }
+    //
+    // removeTask = () => {
+    //     let {toDoItems} = this.state;
+    //     toDoItems = toDoItems.filter(item => !item.checkTask);
+    //     this.setState({toDoItems});
+    //     this.setState({idTask: this.state.toDoItems.length});
+    //
+    // }
 
     render() {
-
         return (
-
             <div className="App">
                 {this.state.visibleForm === 'visible' && <Form
-                    inputList = {this.state.inputList}
-                    importance={this.state.importance}
+                    inputElementList = {this.state.inputElementList}
+                    importanceList={this.state.importanceList}
                     addTask={this.addTask}
+                    closeMenu = {this.openMenuClick}
                     visibleForm={this.state.visibleForm}
                 />}
                 {this.state.visibleForm === 'hidden' && <div>
@@ -80,6 +80,7 @@ class App extends React.Component {
                         toDoItems={this.state.toDoItems}
                         handleClick={this.openMenuClick}
                         removeTask={this.removeTask}
+                        changedItem = {this.changedItem}
                         checkedTask={this.checkedTask}
                     />
                 </div>}

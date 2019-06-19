@@ -27,6 +27,7 @@ class Body extends React.Component {
                     return <ListItem
                         key={index}
                         item={item}
+                        changingItem = {this.props.changedItem}
                         checkingTask = {this.props.checkedTask}
                     />
                 })}

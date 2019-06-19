@@ -3,20 +3,20 @@ import React from 'react';
 class Input extends React.Component {
 
     state = {
-        //valueChange: this.props.valueInput,
+        valueIn: this.props.valueInput,
         nameInput: this.props.nameInput
     }
 
     getChange = (event) => {
-        this.setState({valueChange: event.target.value});
-        this.props.setValueInput(event, this.state.nameInput);
+        this.setState({valueIn: event.target.value});
+        this.props.pushChange(event, this.state.nameInput);
     }
 
     render() {
         return (
             <input onChange={this.getChange}
                    type={this.props.typeInput}
-                   value={this.state.valueChange}>
+                   value={this.state.valueIn}>
             </input>
         );
     }

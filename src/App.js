@@ -6,6 +6,7 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
+        items: {},
         toDoItems: [],
         visibleForm: 'hidden',
         importanceList: ['Все', 'Обычная', 'Важная', 'Очень важная'],

@@ -15,8 +15,7 @@ class Form extends React.Component {
     }
 
     addTask = () => {
-
-
+        this.props.addTask(this.state.itemTask);
     }
 
     componentWillMount(){//выполняется перед рендером
@@ -28,33 +27,33 @@ class Form extends React.Component {
             <div className={'backGr'} style={{visibility: visibleForm}} >
                 <div className={'formTask'}>
                     <input onChange={(event) => this.pushProperty('titleTask',event.target.value)}
-                           value={this.state.itemTask}>
+                           value={this.state.itemTask.titleTask}>
                     </input>
 
-                    <input onChange={(event) => this.setState({descriptionTask: event.target.value})}
-                           value={this.state.descriptionTask}>
+                    <input onChange={(event) => this.pushProperty('descriptionTask',event.target.value)}
+                           value={this.state.itemTask.descriptionTask}>
                     </input>
 
-                    <input type='date' onChange={(event) => this.setState({dateDeadline: event.target.value})}
-                           value={this.state.dateDeadline}>
+                    <input type='date' onChange={(event) => this.pushProperty('dateDeadline',event.target.value)}
+                           value={this.state.itemTask.dateDeadline}>
                     </input>
 
-                    <input type='date' onChange={(event) => this.setState({dateCompleted: event.target.value})}
-                           value={this.state.dateCompleted}>
+                    <input type='date' onChange={(event) => this.pushProperty('dateCompleted',event.target.value)}
+                           value={this.state.itemTask.dateCompleted}>
                     </input>
 
                     <select
-                        onChange={(event) => this.setState({importanceTask: event.target[event.target.selectedIndex].label})}>
-                        {this.state.importance.map((element, index) =>
+                        onChange={(event) => this.pushProperty('importanceTask',event.target[event.target.selectedIndex].label)}>
+                        {this.state.importanceList.map((element, index) =>
                             <option
-                                value={this.state.importanceTask}
+                                value={this.state.itemTask.importanceTask}
                                 key={index}>
                                 {element}
                             </option>
                         )}
                     </select>
                     <Button
-                        handleClick={this.pushTask}
+                        handleClick={this.addTask}
                         nameBtn='Add'
                     />
                     <Button

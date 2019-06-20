@@ -32,22 +32,23 @@ class Form extends React.Component {
             <div className={'backGr'} style={{visibility: visibleForm}}>
                 <div className={'formTask'}>
                     <input onChange={(event) => this.pushProperty('titleTask', event.target.value)}
-                           value={this.state.itemTask.titleTask}>
+                           value={this.state.itemTask.titleTask} defaultValue={'Название'}>
                     </input>
 
                     <input onChange={(event) => this.pushProperty('descriptionTask', event.target.value)}
-                           value={this.state.itemTask.descriptionTask}>
+                           value={this.state.itemTask.descriptionTask} defaultValue={'Описание'}>
                     </input>
 
                     <input type='date' onChange={(event) => this.pushProperty('dateDeadline', event.target.value)}
-                           value={this.state.itemTask.dateDeadline}>
+                           value={this.state.itemTask.dateDeadline} defaultValue={new Date().toLocaleDateString('ru-RU')}>
                     </input>
 
                     <input type='date' onChange={(event) => this.pushProperty('dateCompleted', event.target.value)}
-                           value={this.state.itemTask.dateCompleted}>
+                           value={this.state.itemTask.dateCompleted} defaultValue={new Date().toLocaleDateString('ru-RU')}>
                     </input>
 
                     <select
+                        defaultValue={'Обычная'}
                         onChange={(event) => this.pushProperty('importanceTask', event.target[event.target.selectedIndex].label)}>
                         {this.state.importanceList.map((element, index) =>
                             <option
@@ -71,14 +72,14 @@ class Form extends React.Component {
     }
 }
 
-// Form.defaultProps = {
-//     itemTask: {
-//         titleTask: 'Название',
-//         descriptionTask: 'Описание',
-//         importanceTask: 'Обычная',
-//         dateDeadline: new Date().toLocaleDateString('ru-RU'),
-//         dateCompleted: new Date().toLocaleDateString('ru-RU')
-//     }
-// }
+Form.defaultProps = {
+    itemTask: {
+        titleTask: 'Название',
+        descriptionTask: 'Описание',
+        importanceTask: 'Обычная',
+        dateDeadline: new Date().toLocaleDateString('ru-RU'),
+        dateCompleted: new Date().toLocaleDateString('ru-RU')
+    }
+}
 
 export default Form;

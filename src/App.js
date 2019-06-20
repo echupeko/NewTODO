@@ -7,13 +7,7 @@ import Form from "./components/Form";
 
 class App extends React.Component {
     state = {
-        itemTask: {
-            titleTask: 'Название',
-            descriptionTask: 'Описание',
-            importanceTask: 'Обычная',
-            dateDeadline: new Date().toLocaleDateString('ru-RU'),
-            dateCompleted: new Date().toLocaleDateString('ru-RU')
-        },
+        itemTask: {},
         toDoItems: [],
         visibleForm: 'hidden',
         importanceList: ['Все', 'Обычная', 'Важная', 'Очень важная']

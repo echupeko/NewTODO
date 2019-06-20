@@ -4,13 +4,21 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 import Form from "./components/Form";
 
+
 class App extends React.Component {
     state = {
-        items: {},
+        itemTask: {
+            titleTask: 'Название',
+            descriptionTask: 'Описание',
+            importanceTask: 'Обычная',
+            dateDeadline: new Date().toLocaleDateString('ru-RU'),
+            dateCompleted: new Date().toLocaleDateString('ru-RU')
+        },
         toDoItems: [],
         visibleForm: 'hidden',
-        importanceList: ['Все', 'Обычная', 'Важная', 'Очень важная'],
+        importanceList: ['Все', 'Обычная', 'Важная', 'Очень важная']
     };
+
 
     addTask = (item) => {
         item.idTask = this.state.toDoItems.length;
@@ -52,10 +60,10 @@ class App extends React.Component {
         return (
             <div className="App">
                 {this.state.visibleForm === 'visible' && <Form
-                    itemTask = {this.state.items}
+                    itemTask = {this.state.itemTask}
                     importanceList={this.state.importanceList}
                     addTask={this.addTask}
-                    closeMenu = {this.openForm}
+                    closeForm = {this.openForm}
                     visibleForm={this.state.visibleForm}
                 />}
                 {this.state.visibleForm === 'hidden' && <div>
@@ -74,5 +82,7 @@ class App extends React.Component {
 
     }
 }
+
+
 
 export default App;

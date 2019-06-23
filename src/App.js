@@ -54,7 +54,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 {this.state.visibleForm === 'visible' && <Form
-                    itemTask = {this.state.itemTask}
+                    itemTask = {{}}
                     importanceList={this.state.importanceList}
                     addTask={this.addTask}
                     closeForm = {this.openForm}

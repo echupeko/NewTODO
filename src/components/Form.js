@@ -16,7 +16,10 @@ class Form extends React.Component {
     }
 
     addTask = () => {
-        this.props.addTask(this.state.itemTask);
+        if(Object.keys(this.state.itemTask).length !== 0)
+            this.props.addTask(this.state.itemTask);
+        else
+            alert('Введите данные задачи');
     }
 
     closeForm = () => {
@@ -44,7 +47,7 @@ class Form extends React.Component {
                     </input>
 
                     <input type='date' onChange={(event) => this.pushProperty('dateCompleted', event.target.value)}
-                           value={this.state.itemTask.dateCompleted} defaultValue={new Date().toLocaleDateString('ru-RU')}>
+                           value={this.state.itemTask.dateCompleted && new Date().toLocaleDateString('ru-RU')}>
                     </input>
 
                     <select

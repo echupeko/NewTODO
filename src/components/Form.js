@@ -16,7 +16,7 @@ class Form extends React.Component {
     }
 
     addTask = () => {
-        if(Object.keys(this.state.itemTask).length !== 0)
+        if (Object.keys(this.state.itemTask).length)
             this.props.addTask(this.state.itemTask);
         else
             alert('Введите данные задачи');

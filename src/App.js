@@ -31,8 +31,8 @@ class App extends React.Component {
         const {toDoItems} = this.state;
         let {items} = this.state;
         items = toDoItems.filter(item => item.idTask === index);
+        this.setState({itemTask: items[0]});
         this.openForm();
-        this.setState({items});
     }
 
     checkedTask = (index) => {
@@ -41,16 +41,6 @@ class App extends React.Component {
             if (item.idTask === index) {item.checkTask = !item.checkTask};
         })
         this.setState({toDoItems});
-        let items = toDoItems.filter(item => item.checkTask === true);
-        this.setState({itemTask: items[0]});
-    }
-
-    openItem = (index) => {
-        const {toDoItems} = this.state;
-        let {items} = this.state;
-        items = toDoItems.filter(item => item.idTask === index);
-        this.openForm();
-        this.setState({items});
     }
 
     removeTask = () => {

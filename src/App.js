@@ -14,13 +14,25 @@ class App extends React.Component {
     };
 
 
-    addTask = (item) => {
-        item.idTask = this.state.toDoItems.length;
-        const {toDoItems} = this.state;
-        toDoItems.push(item);
+    addTask = (items,flag) => {
+        const iD = items.idTask;
+        let {toDoItems} = this.state;
+        if (iD) {
+            toDoItems.forEach(function (item) {
+                if (item.idTask === iD) {
+                    toDoItems.splice(iD,1);
+                    toDoItems.push(items);
+                };
+            });
+        }
+        else {
+            items.idTask = this.state.toDoItems.length;
+            toDoItems.push(items);
+
+        }
         this.setState({toDoItems});
         this.setState({itemTask: {}});
-        this.openForm();
+        flag && this.openForm();
     };
 
     openForm = () => {
@@ -39,7 +51,7 @@ class App extends React.Component {
         let {toDoItems} = this.state;
         toDoItems.forEach(function (item) {
             if (item.idTask === index) {item.checkTask = !item.checkTask};
-        })
+        });
         this.setState({toDoItems});
     }
 

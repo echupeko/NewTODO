@@ -2,22 +2,31 @@ import React from 'react';
 import '../style/Form.css';
 import Button from './Button';
 
+const defaultTask= {
+    itemTask: {
+        titleTask: 'Название',
+        descriptionTask: 'Описание',
+        importanceTask: 'Обычная',
+        dateDeadline: new Date().toLocaleDateString('ru-RU'),
+        dateCompleted: new Date().toLocaleDateString('ru-RU')
+    }};
 
-class Form extends React.Component {
+    class Form extends React.Component {
 
     state = {
         importanceList: this.props.importanceList,
-        itemTask: this.props.itemTask
+        itemTask: this.props.itemTask || defaultTask
     };
 
     pushProperty = (element, value) => {
         let {itemTask} = this.state;
         itemTask[element] = value;
+        this.props.addTask(this.state.itemTask,0);
     }
 
     addTask = () => {
         if (Object.keys(this.state.itemTask).length)
-            this.props.addTask(this.state.itemTask);
+            this.props.addTask(this.state.itemTask,1);
         else
             alert('Введите данные задачи');
     }
@@ -30,6 +39,7 @@ class Form extends React.Component {
     }
 
     render() {
+
         const {visibleForm} = this.props;
         return (
             <div className={'backGr'} style={{visibility: visibleForm}}>
@@ -72,16 +82,6 @@ class Form extends React.Component {
                 </div>
             </div>
         );
-    }
-}
-
-Form.defaultProps = {
-    itemTask: {
-        titleTask: 'Название',
-        descriptionTask: 'Описание',
-        importanceTask: 'Обычная',
-        dateDeadline: new Date().toLocaleDateString('ru-RU'),
-        dateCompleted: new Date().toLocaleDateString('ru-RU')
     }
 }
 

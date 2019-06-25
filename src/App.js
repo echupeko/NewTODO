@@ -61,7 +61,7 @@ class App extends React.Component {
                     closeForm = {this.openForm}
                     visibleForm={this.state.visibleForm}
                 />}
-                {this.state.visibleForm === 'hidden' && <div>
+                {this.state.visibleForm === 'hidden' && <div className="mainBlock">
                     <Header/>
                     <Body
                         toDoItems={this.state.toDoItems}

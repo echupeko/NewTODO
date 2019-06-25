@@ -47,7 +47,7 @@ class Form extends React.Component {
                     </input>
 
                     <input type='date' onChange={(event) => this.pushProperty('dateCompleted', event.target.value)}
-                           value={this.state.itemTask.dateCompleted && new Date().toLocaleDateString('ru-RU')}>
+                           value={this.state.itemTask.dateCompleted} defaultValue={new Date().toLocaleDateString('ru-RU')}>
                     </input>
 
                     <select
@@ -63,11 +63,11 @@ class Form extends React.Component {
                     </select>
                     <Button
                         handleClick={this.addTask}
-                        nameBtn='Add'
+                        nameBtn='Сохранить'
                     />
                     <Button
                         handleClick={this.closeForm}
-                        nameBtn='Close'
+                        nameBtn='Закрыть'
                     />
                 </div>
             </div>

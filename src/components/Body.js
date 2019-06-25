@@ -7,21 +7,22 @@ class Body extends React.Component {
     render() {
         const list = this.props.toDoItems;
         return (
-            <div>
+            <div className="bodyBlock">
                 <Button
                     handleClick={this.props.handleClick}
-                    nameBtn='Open menu'
+                    nameBtn='Добавить задачу'
                 />
                 <Button
                     handleClick={this.props.removeTask}
-                    nameBtn='Remove'
+                    nameBtn='Удалить'
                 />
-                <div className={'itemRowTop'}>
-                    <span>Name</span>
-                    <span>Description</span>
-                    <span>Importance</span>
-                    <span>Date deadline</span>
-                    <span>Date completed</span>
+                <div className={'itemRow RowTop'}>
+                    <span></span>
+                    <span>Название</span>
+                    <span>Описание</span>
+                    <span>Важность</span>
+                    <span>Срок выполнения</span>
+                    <span>Дата выполнения</span>
                 </div>
                 {list.length > 0 && list.map((item, index) => {
                     return <ListItem
